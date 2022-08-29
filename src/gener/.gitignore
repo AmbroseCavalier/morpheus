@@ -1,0 +1,5 @@
+*.o
+*.a
+checkstype
+do_conj
+gener
