@@ -16,7 +16,7 @@ nextkey(char *keylist, char *nextkey)
 	while(*a && !isspace(*a)) *b++ = *a++;
 	*b = 0;
 	while(isspace(*a)) a++;
-	if( *a ) strcpy(keylist,a);
+	if( *a ) memmove(keylist,a,strlen(a)+1);
 	else  *keylist = 0;
 	return(1);
 }
