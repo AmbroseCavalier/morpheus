@@ -1,3 +1,5 @@
+#pragma once
+
 #include <greek.h>
 #include "dialect.h"
 #include "stemtype.h"

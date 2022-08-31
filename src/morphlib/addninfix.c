@@ -12,7 +12,7 @@
 addninfix(char *word)
 {
 	char * syllp;
-	char *getaccp();
+	char *getaccp(char *word, int syll);
 	int c = 'n';
 	
 

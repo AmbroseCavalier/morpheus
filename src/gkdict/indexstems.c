@@ -382,7 +382,8 @@ if(preverb_of(&GkWord)[0] )
 
 dumpaccstem(char *prefix, char *curstem, char *markedstem, char *curlemma, gk_string *gstr, gk_string *avoidgstr, int syllnum, char *preverb)
 {
-	char * p, * getsyll();
+	char *p;
+	char *getsyll(char *word, int syll);
 	char tmpmarked[MAXWORDSIZE];
 	char tmpstem[MAXWORDSIZE];
 

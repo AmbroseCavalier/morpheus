@@ -1,4 +1,5 @@
 #include <gkstring.h>
+#include <contract.h>
 
 static	char origformula[LONGSTRING];
 static	char curlemma[LONGSTRING];
@@ -226,8 +227,8 @@ printf("pflag %o stype %o vstem %o\n", ppartflag , stemtype_of(gstr2) , PPARTMAS
 printf("str1 [%s] str2 [%s] rval %d\n", gkstring_of(gstr1), gkstring_of(gstr2), rval );
 */
 	if( rval ) {
-		Dialect d, AndDialect();
-		char *getaccp();
+		Dialect d;
+		char *getaccp(char *word, int syll);
 		
 		strcpy(word,stemstr);
 

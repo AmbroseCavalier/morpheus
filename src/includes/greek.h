@@ -600,7 +600,9 @@ extern char genders[][MAXWORDSIZE];
 extern char degrees[][MAXWORDSIZE];
 extern char prefl_types[][MAXWORDSIZE];
 
-char *getsyll(), *getsyll2(), *getaccp();
+char *getsyll(char *word, int syll);
+char *getsyll2(char *word, int syll);
+char *getaccp(char *word, int syll);
 /*
 char getaccent(),getbreath();
 */

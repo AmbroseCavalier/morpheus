@@ -166,7 +166,7 @@ PrntGkStr(poss_subs+sofar,stdout);
 
 needs_sub(gk_string *gstr, Dialect skipdial, gk_string *matchgstr, char *haveseen, char *curstring, char *raw, char *cooked)
 {
-	char * getaccp();
+	char *getaccp(char *word, int syll);
 	register char * p1, *p2;
 	int rval = 0;
 	int syllno;

@@ -1,7 +1,9 @@
 #include <gkstring.h>
 
 gk_word GkWord, BlankGkWord;
-gk_string Gstr, AvoidGstr, BlankGstr;
+gk_string Gstr;
+gk_string AvoidGstr;
+gk_string BlankGstr;
 main()
 {
 	char line[2000];

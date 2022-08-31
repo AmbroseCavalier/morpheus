@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <modes.h>
+#include <contract.h>
 #define SKIPLINE  100
 static  AddWdEndings( gk_word * , gk_string * , gk_word * , int );
 
@@ -12,10 +13,9 @@ gk_string * chckendings();
 gk_word * GenStemForms(gk_word *, char *, int);
 gk_word * GenIrregForm(gk_word *, char *, int);
 
-Dialect AndDialect();
 int CompGkForms(gk_word *gkform1, gk_word *gkform2);
 
-gk_string BlankGstr;
+extern gk_string BlankGstr;
 gk_word TmpGkword;
 
 GenDictEntry(Gkword,dentry)
