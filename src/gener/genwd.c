@@ -15,7 +15,7 @@ gk_word * GenIrregForm(gk_word *, char *, int);
 
 int CompGkForms(gk_word *gkform1, gk_word *gkform2);
 
-extern gk_string BlankGstr;
+gk_string BlankGstr;
 gk_word TmpGkword;
 
 GenDictEntry(Gkword,dentry)

@@ -19,7 +19,7 @@
 # the first target.
 
 INCLUDE=../src/includes
-CFLAGS= -g -O2 -I${INCLUDE} -std=gnu89 -Wno-error=return-type -Wno-error=implicit-function-declaration
+CFLAGS= -g -O3 -sENVIRONMENT=web -sASYNCIFY -I${INCLUDE} -std=gnu89 -Wno-error=return-type -Wno-error=implicit-function-declaration
 RM=rm
 #CC=cc
 CC=emcc
@@ -245,4 +245,18 @@ build/stdiomorph.o:
 	$(CC) $(CFLAGS) -c -o $@ ${ANALLIB_SOURCE}/$(*F).c
 
 cruncher:${LIBS} ${ANALLIB} build/stdiomorph.o build/genwd.o
-	${CC} $(CFLAGS) -o cruncher build/stdiomorph.o build/genwd.o ${ANALLIB} ${LIBS}
+	${CC} $(CFLAGS) -sSINGLE_FILE -o cruncher.js \
+--preload-file ../stemlib/Greek/derivs/indices/derivind@/Greek/derivs/indices/derivind \
+--preload-file ../stemlib/Greek/endtables/indices/nendind@/Greek/endtables/indices/nendind \
+--preload-file ../stemlib/Greek/endtables/indices/vbendind@/Greek/endtables/indices/vbendind \
+--preload-file ../stemlib/Greek/endtables/out@/Greek/endtables/out \
+--preload-file ../stemlib/Greek/rule_files/derivtypes.table@/Greek/rule_files/derivtypes.table \
+--preload-file ../stemlib/Greek/rule_files/domainlist.table@/Greek/rule_files/domainlist.table \
+--preload-file ../stemlib/Greek/rule_files/raw_preverbs.table@/Greek/rule_files/raw_preverbs.table \
+--preload-file ../stemlib/Greek/rule_files/stemtypes.table@/Greek/rule_files/stemtypes.table \
+--preload-file ../stemlib/Greek/steminds/nomind@/Greek/steminds/nomind \
+--preload-file ../stemlib/Greek/steminds/nomind.lindex@/Greek/steminds/nomind.lindex \
+--preload-file ../stemlib/Greek/steminds/vbind@/Greek/steminds/vbind \
+--preload-file ../stemlib/Greek/steminds/vbind.lindex@/Greek/steminds/vbind.lindex \
+--preload-file ../stemlib/Greek/stemsrc/vbs.cmp.ml@/Greek/stemsrc/vbs.cmp.ml \
+build/stdiomorph.o build/genwd.o ${ANALLIB} ${LIBS}

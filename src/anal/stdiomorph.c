@@ -3,6 +3,9 @@
 #include <ctype.h>
 #include <unistd.h>
 #include <prntflags.h>
+#ifdef __EMSCRIPTEN__
+  #include <emscripten.h>
+#endif
 #include "stdiomorph.proto.h"
 #ifndef CLOCKS_PER_SEC
 #define CLOCKS_PER_SEC  1000000         /* ANSI C clock ticks per sec */
@@ -23,6 +26,12 @@ int timeit = 1;
 
 #define ARGS "ILalmnbckidsxSVpPeTo:"
 #define PATH_SEP '/'
+
+#ifdef __EMSCRIPTEN__
+  EM_ASYNC_JS(void, waitForWebInput, (), {
+    await window.NEXT_WORD_READY();
+  });
+#endif
 
 main(argc,argv)
 int argc;
@@ -167,6 +176,9 @@ fprintf(stdout,"files: [%s] [%s]\n", outname, failedname);
     exit(-1);
   }
   
+  #ifdef __EMSCRIPTEN__
+    waitForWebInput();
+  #endif
   while(fgets(line,(size_t)sizeof line,finput)) {
     /*
        char * t;
@@ -251,6 +263,10 @@ fprintf(stdout,"files: [%s] [%s]\n", outname, failedname);
       }
       fprintf(stderr,"%ld %ld %0.2f %s %d\n", nwords , nhits, 100* ((float)nhits/(float)nwords) , line , rval  );
     }
+
+    #ifdef __EMSCRIPTEN__
+      waitForWebInput();
+    #endif
   }
   if( finput != stdin )
     fclose(finput);
